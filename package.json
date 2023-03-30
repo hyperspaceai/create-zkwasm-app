@@ -1,0 +1,20 @@
+{
+  "name": "create-zkwasm-app",
+  "version": "0.0.1",
+  "description": "Scaffolds a template zkWasm app using AssemblyScript.",
+  "main": "./index.js",
+  "bin": {
+    "create-zkwasm-app": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyperspaceinc/create-zkwasm-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hyperspaceinc/create-zkwasm-app/issues"
+  },
+  "homepage": "https://github.com/hyperspaceinc/create-zkwasm-app#readme",
+  "dependencies": {
+    "cross-spawn": "^7.0.3"
+  }
+}

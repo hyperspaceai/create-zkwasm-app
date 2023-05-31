@@ -5,9 +5,93 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AssemblyScript Demo</title>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>Hello zkWasm SDK</h1>
+    <div class="main-container">
+      <section class="hero">
+        <div class="container">
+          <h1>zkWasm SDK</h1>
+          <div class="flex hero-code">
+            <div class="code-window">
+              <div class="top mb-2 flex">
+                <div class="dot red"></div>
+                <div class="dot orange"></div>
+                <div class="dot green"></div>
+              </div>
+              <pre><code class="language-javascript">import { Module, verify } from 'https://unpkg.com/zkwasm@0.1.6?module';
+
+const res = await fetch('/pkg/release.wasm');
+const binary = await res.arrayBuffer();
+let m = await Module.fromBinary(binary);
+
+let result = await m.invokeExport('greet', [new TextEncoder().encode('John')]);
+
+const verify = await verify(result.proof);</code></pre>
+            </div>
+            <div class="container">
+              <div class="content">
+                <div class="top mb-2 flex">
+                  <div class="dot red"></div>
+                  <div class="dot orange"></div>
+                  <div class="dot green"></div>
+                </div>
+
+                <div class="typing-text"></div>
+
+                <!-- Add the rest of the content here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card-section">
+        <div class="card">
+          <h3>Hello</h3>
+          <p>Write a message and click submit to see a basic proof of execution.</p>
+          <input type="text" placeholder="Input" id="hello-input" />
+          <div class="loading-container" style="display: none" id="hello-loading-container">
+            <div class="loading"></div>
+          </div>
+          <button type="submit" id="hello-submit-button">Submit</button>
+          <div class="results" id="hello-result"></div>
+        </div>
+
+        <div class="card">
+          <h3>Malicious</h3>
+          <p>Write a message and click submit to see a malicious proof of execution.</p>
+          <input type="text" placeholder="Input" id="malicious-input" />
+          <div class="loading-container" style="display: none" id="malicious-loading-container">
+            <div class="loading"></div>
+          </div>
+          <button type="submit" id="malicious-submit-button">Submit</button>
+          <div class="results" id="malicious-result"></div>
+        </div>
+      </section>
+      <section>
+        <div class="container">
+          <h2>How it works</h2>
+          <p>
+            zkWasm is a zero-knowledge proof system for WebAssembly. It allows you to prove that a
+            WebAssembly program was executed correctly without revealing any information about the
+            program.
+          </p>
+          <p>
+            Start by editing your proof logic in the wasm/assembly/index.ts AssemblyScript file and
+            you can change how it's called in the www/index.mjs file.
+          </p>
+        </div>
+      </section>
+    </div>
     <script src="index.mjs" type="module"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/components/prism-javascript.min.js"></script>
   </body>
 </html>
